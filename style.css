@@ -29,8 +29,28 @@ html {
     padding: 20px;
   }
 
+  .nav ul {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    background-color: #000;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .nav ul.open {
+    display: flex;
+  }
+
   .nav li {
-    margin-left: 20px;
+    margin: 10px 0;
+  }
+
+  .burger {
+    display: flex;
   }
 }
 
@@ -99,6 +119,54 @@ a {
 .nav a {
   color: white;
   text-decoration: none;
+  position: relative;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: #e0f7fa;
+  transition: width 0.3s;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.burger span {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  margin: 4px 0;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.burger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
 }
 
 h2 {
@@ -205,6 +273,25 @@ h2 {
 
 .quetions {
   color: #000000;
+}
+
+.faq-list {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 20px;
+}
+
+.faq-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.faq-question {
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 
