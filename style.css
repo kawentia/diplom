@@ -1,0 +1,167 @@
+/* Общие стили */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* Контейнер */
+.container {
+  margin: 0 auto;
+  padding: 20px 250px;
+  margin: 0;
+}
+
+/* Хедер */
+.header {
+  width: 100%;
+  background-color: #000000;
+  color: #fff;
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.icon {}
+
+.text-main {
+  padding-top: 150px;
+  font-size: 40px;
+}
+
+.text-min {
+  width: 700px;
+  height: 115px;
+  margin-top: 30px;
+  font-size: 28px;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav li {
+  display: inline-block;
+  margin-left: 80px;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+}
+
+h2 {
+  text-align: center;
+  color: #e0f7fa;
+  padding-top: 30px;
+}
+
+/* Разные блоки с разной шириной */
+.block-1 .container {
+  margin-top: 0;
+  padding-top: 0;
+  min-height: 750px;
+  background-color: #f9f9f9;
+
+}
+
+.block-2 .container {
+  margin-top: 0;
+  padding-top: 0;
+  min-height: 750px;
+  background-color: #64564c;
+
+}
+
+.training-image {
+  display: flex;
+  justify-content: center;
+  /* Центрируем по горизонтали */
+  flex-wrap: wrap;
+  /* Перенос строк, если не помещаются */
+  gap: 20px;
+  /* Отступ между изображениями */
+  margin-top: 20px;
+}
+
+.block-3 .container {
+  margin-top: 0;
+  padding-top: 0;
+  min-height: 350px;
+  background-color: #fff6e5;
+}
+
+.text-3 {
+  color: rgb(0, 0, 0);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 83px;
+  letter-spacing: 0%;
+  text-align: center;
+  padding-top: 50px;
+
+}
+
+.block-4 .container {
+  background-color: #f0f0ff;
+  padding-top: 50px;
+  min-height: 630px;
+}
+
+.certificate {
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  /* Центрирует содержимое по горизонтали */
+  margin: 40px 0;
+}
+
+.block-5 .container {
+  background-color: #45351f;
+  padding-top: 50px;
+  min-height: 300px;
+}
+
+.block-6 .container {
+  max-width: 850px;
+  background-color: #f5f5f5;
+}
+
+.block-7 .container {
+  max-width: 750px;
+  background-color: #e0f7fa;
+}
+
+.block-1,
+.block-2,
+.block-3,
+.block-4,
+.block-5,
+.block-6,
+.block-7 {}
+
+/* Футер */
+.footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 50px;
+  position: relative;
+  width: 100%;
+}
