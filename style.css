@@ -14,8 +14,41 @@ html {
 /* Контейнер */
 .container {
   margin: 0 auto;
-  padding: 20px 250px;
-  margin: 0;
+  /* padding: 20px 250px; */
+  max-width: 1200px;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 20px 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  .nav li {
+    margin-left: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .text-main {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .text-main img {
+    max-width: 250px;
+    margin-top: 20px;
+  }
+
+  .text-min {
+    width: 100%;
+    font-size: 20px;
+  }
 }
 
 /* Хедер */
@@ -27,11 +60,13 @@ html {
   position: sticky;
   top: 0;
   z-index: 100;
+  min-height: 100px;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+  font-size: 28px;
 }
 
 .icon {}
@@ -49,6 +84,7 @@ a {
 }
 
 .header .container {
+  padding-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,6 +93,7 @@ a {
 .nav li {
   display: inline-block;
   margin-left: 80px;
+  font-size: 32px;
 }
 
 .nav a {
@@ -71,7 +108,7 @@ h2 {
 }
 
 /* Разные блоки с разной шириной */
-.block-1 .container {
+.block-1 {
   margin-top: 0;
   padding-top: 0;
   min-height: 750px;
@@ -79,11 +116,11 @@ h2 {
 
 }
 
-.block-2 .container {
+.block-2 {
   margin-top: 0;
   padding-top: 0;
   min-height: 750px;
-  background-color: #64564c;
+  background: url('img/brown.jpeg') center/cover no-repeat;
 
 }
 
@@ -98,11 +135,11 @@ h2 {
   margin-top: 20px;
 }
 
-.block-3 .container {
+.block-3 {
   margin-top: 0;
   padding-top: 0;
   min-height: 350px;
-  background-color: #fff6e5;
+  background: rgb(186, 182, 182);
 }
 
 .text-3 {
@@ -116,52 +153,69 @@ h2 {
 
 }
 
-.block-4 .container {
+.block-4 {
   background-color: #f0f0ff;
   padding-top: 50px;
-  min-height: 630px;
+  min-height: 650px;
 }
 
 .certificate {
-  max-width: 800px;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  /* Центрирует содержимое по горизонтали */
-  margin: 40px 0;
+  display: block;
+  margin: 15px auto;
+  width: 65%;
 }
 
-.block-5 .container {
-  background-color: #45351f;
+.block-5 {
+  background: url('img/brown.jpeg') center/cover no-repeat;
   padding-top: 50px;
-  min-height: 300px;
+  min-height: 350px;
 }
 
-.block-6 .container {
-  max-width: 850px;
-  background-color: #f5f5f5;
+.text-4 {
+  color: rgb(255, 255, 255);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 83px;
+  letter-spacing: 0%;
+  text-align: center;
+  padding-top: 50px;
 }
 
-.block-7 .container {
-  max-width: 750px;
-  background-color: #e0f7fa;
+.block-6 {
+  background: rgb(186, 182, 182);
+  padding-top: 50px;
+  min-height: 500px;
 }
 
-.block-1,
-.block-2,
-.block-3,
-.block-4,
-.block-5,
-.block-6,
-.block-7 {}
+.text-5 {
+  color: rgb(255, 255, 255);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 83px;
+  letter-spacing: 0%;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.block-7 {
+  background: rgb(255, 255, 255);
+  padding-top: 50px;
+  min-height: 650px;
+}
+
+.quetions {
+  color: #000000;
+}
+
 
 /* Футер */
 .footer {
-  background-color: #333;
+  background-color: #000000;
   color: #fff;
   text-align: center;
-  padding: 20px 0;
+  padding: 50px 0;
   margin-top: 50px;
   position: relative;
   width: 100%;
+  min-height: 100px;
 }
