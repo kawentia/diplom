@@ -14,7 +14,6 @@ html {
 /* Контейнер */
 .container {
   margin: 0 auto;
-  /* padding: 20px 250px; */
   max-width: 1200px;
 }
 
@@ -71,6 +70,18 @@ html {
   }
 }
 
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Хедер */
 .header {
   width: 100%;
@@ -81,6 +92,7 @@ html {
   top: 0;
   z-index: 100;
   min-height: 100px;
+
 }
 
 a {
@@ -89,7 +101,7 @@ a {
   font-size: 28px;
 }
 
-.icon {}
+
 
 .text-main {
   padding-top: 150px;
@@ -106,9 +118,15 @@ a {
 .header .container {
   padding-top: 10px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
+
+.nav {
+
+  justify-content: flex-end;
+}
+
+
 
 .nav li {
   display: inline-block;
@@ -137,7 +155,7 @@ a {
   width: 100%;
 }
 
-.burger {
+/* .burger {
   display: none;
   flex-direction: column;
   cursor: pointer;
@@ -162,7 +180,7 @@ a {
 .burger.open span:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
 
-}
+} */
 
 .nav ul {
   list-style: none;
@@ -171,7 +189,7 @@ a {
 
 h2 {
   text-align: center;
-  color: #e0f7fa;
+  color: #ffffff;
   padding-top: 30px;
 }
 
@@ -180,7 +198,7 @@ h2 {
   margin-top: 0;
   padding-top: 0;
   min-height: 750px;
-  background-color: #f9f9f9;
+  background-color: #f0f0ff;
 
 }
 
@@ -251,8 +269,8 @@ h2 {
 
 .block-6 {
   background: rgb(186, 182, 182);
-  padding-top: 50px;
-  min-height: 500px;
+  padding-top: 40px;
+  min-height: 420px;
 }
 
 .text-5 {
@@ -265,33 +283,86 @@ h2 {
   padding-top: 50px;
 }
 
+
+
+
+
+
+.block-8 {
+  background: rgb(125, 120, 120);
+  padding: 20px 0;
+  min-height: 420px;
+}
+
+
+
+
+
+
 .block-7 {
   background: rgb(255, 255, 255);
   padding-top: 50px;
   min-height: 650px;
 }
 
-.quetions {
-  color: #000000;
-}
-
 .faq-list {
-  max-height: 300px;
-  overflow-y: auto;
-  margin-top: 20px;
+  margin-top: 50px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .faq-card {
   background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.faq-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 .faq-question {
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  color: #333;
+  position: relative;
+}
+
+.faq-answer {
+  font-size: 18px;
+  padding: 0 20px 20px 20px;
+  color: #444;
+  display: none;
+  line-height: 1.5;
+}
+
+.faq-card.open .faq-answer {
+  display: block;
+}
+
+.faq-question::after {
+  content: "+";
+  position: absolute;
+  right: 20px;
+  font-size: 24px;
+  transition: transform 0.3s ease;
+}
+
+.faq-card.open .faq-question::after {
+  content: "–";
+  transform: rotate(180deg);
+}
+
+.quetions {
+  color: #000;
 }
 
 
@@ -305,4 +376,88 @@ h2 {
   position: relative;
   width: 100%;
   min-height: 100px;
+}
+
+
+
+
+
+/* Відгуки */
+.reviews-slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin-top: 50px;
+  gap: 20px;
+}
+
+.slider-btn {
+  background: none;
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.vidguki-list {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  gap: 60px;
+  max-width: 100%;
+}
+
+.vidguki-list::-webkit-scrollbar {
+  display: none;
+}
+
+.review-card {
+  flex: 0 0 auto;
+  width: 320px;
+  background: linear-gradient(145deg, #f9f9ff, #ffffff);
+  border-radius: 20px;
+  padding: 30px 24px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.review-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+}
+
+.review-card::before {
+  content: "❝";
+  font-size: 40px;
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  color: #ccc;
+}
+
+.review-card p {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding-left: 10px;
+  padding-top: 20px;
+}
+
+.review-author {
+  font-weight: 600;
+  font-size: 16px;
+  color: #777;
+  text-align: right;
+  margin-top: 20px;
+  font-style: italic;
 }

@@ -62,6 +62,68 @@ fetch('data.json')
     // FAQ заголовок
     document.getElementById('faq-title').textContent = data.sectionTitles.faq;
 
+
+
+
+    //ывапроооооооооооооооооооооооооооооооооооо
+    const reviewsList = document.getElementById('reviews-list');
+    const reviewCards = [];
+
+    // создаём карточки и сохраняем в массив
+    data.reviews.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'review-card';
+
+      const text = document.createElement('p');
+      text.textContent = item.text;
+
+      const author = document.createElement('div');
+      author.className = 'review-author';
+      author.textContent = item.author;
+
+      card.appendChild(text);
+      card.appendChild(author);
+      reviewsList.appendChild(card);
+      reviewCards.push(card); // сохраняем
+    });
+
+    // кнопки
+    const prev = document.querySelector('.reviews-prev');
+    const next = document.querySelector('.reviews-next');
+
+    if (prev && next) {
+      prev.addEventListener('click', () => {
+        const scrollAmount = reviewCards[0].offsetWidth + 60;
+        if (reviewsList.scrollLeft <= 0) {
+          reviewsList.scrollLeft = reviewsList.scrollWidth;
+        } else {
+          reviewsList.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        }
+      });
+
+      next.addEventListener('click', () => {
+        const scrollAmount = reviewCards[0].offsetWidth + 60;
+        const maxScroll = reviewsList.scrollWidth - reviewsList.clientWidth;
+        if (reviewsList.scrollLeft >= maxScroll - 5) {
+          reviewsList.scrollLeft = 0;
+        } else {
+          reviewsList.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+      });
+    }
+
+    // автопрокрутка каждые 3 секунды
+    setInterval(() => {
+      const scrollAmount = reviewCards[0].offsetWidth + 60;
+      const maxScroll = reviewsList.scrollWidth - reviewsList.clientWidth;
+      if (reviewsList.scrollLeft >= maxScroll - 5) {
+        reviewsList.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        reviewsList.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }, 3000);
+
+
     // FAQ items
     const faqList = document.getElementById('faq-list');
     data.faq.forEach(item => {
@@ -81,14 +143,49 @@ fetch('data.json')
       faqList.appendChild(card);
     });
 
-    // Автоматичне прокручування кожні 5 секунд
-    setInterval(() => {
-      if (faqList.scrollTop + faqList.clientHeight >= faqList.scrollHeight) {
-        faqList.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        faqList.scrollBy({ top: faqList.clientHeight, behavior: 'smooth' });
-      }
-    }, 5000);
+
+
+
+
+    const faqData = data.faq;  //данные с сервера ,ответы на вопросы
+    const faqContainer = document.getElementById('faq-list');
+
+    faqData.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'faq-card';
+      card.innerHTML = `
+        <div class="faq-question">${item.question}</div>
+        <div class="faq-answer">${item.answer}</div>
+      `;
+      faqContainer.appendChild(card);
+    });
+
+    // Обработка кликов
+    faqContainer.addEventListener('click', function (e) {
+      const card = e.target.closest('.faq-card');
+      if (!card) return;
+      card.classList.toggle('open');
+    });
+
+
+
+
+    //фото
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    document.querySelectorAll('.fade-in').forEach(img => {
+      observer.observe(img);
+    });
 
     // Footer
     document.getElementById('footer-text').textContent = data.footer;
