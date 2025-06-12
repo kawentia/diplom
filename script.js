@@ -26,15 +26,80 @@ fetch('data.json')
       navList.appendChild(li);
     });
 
-    const burger = document.getElementById('burger');
-    burger.addEventListener('click', () => {
-      navList.classList.toggle('open');
-      burger.classList.toggle('open');
-    }),
+    const burger = document.querySelector(".burger");
+    const menu = document.getElementById("nav-list");
+
+    burger.addEventListener("click", () => {
+      burger.classList.toggle("open"); // Анімація
+      menu.classList.toggle("active"); // Показ списку
+    });
 
 
-      // Головний блок
-      document.getElementById('main-title').textContent = data.mainTitle;
+
+
+
+
+
+
+    // document.addEventListener('DOMContentLoaded', () => {
+    //   const burger = document.querySelector('.bm-burger');
+    //   const navMenu = document.querySelector('#bm-nav-menu');
+
+    //   // Підтягуємо меню з JSON
+    //   fetch('data.json')
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       navMenu.innerHTML = ''; // очищаємо старе меню
+    //       data.menu.forEach(item => {
+    //         const li = document.createElement('li');
+    //         li.className = 'bm-nav-item';
+
+    //         const a = document.createElement('a');
+    //         a.href = item.link;
+    //         a.className = 'bm-nav-link';
+    //         a.textContent = item.title;
+
+    //         li.appendChild(a);
+    //         navMenu.appendChild(li);
+    //       });
+    //     });
+
+    //   // Відкриття/закриття меню
+    //   burger.addEventListener('click', () => {
+    //     const isActive = burger.classList.toggle('active');
+    //     navMenu.classList.toggle('active');
+    //     burger.setAttribute('aria-expanded', isActive);
+    //   });
+
+    //   // Закриття після кліку
+    //   document.addEventListener('click', e => {
+    //     if (e.target.classList.contains('bm-nav-link')) {
+    //       burger.classList.remove('active');
+    //       navMenu.classList.remove('active');
+    //       burger.setAttribute('aria-expanded', 'false');
+    //     }
+    //   });
+    // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Головний блок
+    document.getElementById('main-title').textContent = data.mainTitle;
     document.getElementById('main-text').textContent = data.mainText;
     document.getElementById('img-main').src = data.images.main;
 
@@ -147,7 +212,7 @@ fetch('data.json')
 
 
 
-    const faqData = data.faq;  //данные с сервера ,ответы на вопросы
+    const faqData = data.faq;  //данные с сервера ответы на
     const faqContainer = document.getElementById('faq-list');
 
     faqData.forEach(item => {
